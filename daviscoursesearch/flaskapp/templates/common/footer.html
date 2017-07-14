@@ -1,0 +1,55 @@
+    <script type="text/json" id="subjects_and_classes">
+      {{ catalog | tojson | safe }}
+    </script>
+
+    <script type="text/javascript">
+      window.SUBJECTS_AND_CLASSES = JSON.parse(document.getElementById('subjects_and_classes').innerText);
+      window.ADDED_COURSES = JSON.parse('{{ added_courses | tojson | safe }}');
+      window.PRETTY_SESSION_BY_MONTH = JSON.parse('{{ pretty_sessions | tojson | safe }}')
+    </script>
+    <!-- Use non minified for Development -->
+    {% for script in footer_scripts|default([]) + ['lib/react.js', 'lib/react-dom.js', 'lib/immutable.js', 'compiled.js', 'lib/react-infinite.min.js', 'lib/underscore.js'] %}
+      <script type="text/javascript" src="{{ url_for('static', filename='js/{}'.format(script)) ~ '?' ~ cache_buster }}"></script>
+    {% endfor %}
+  </div>
+<script>
+  {% if user_meta %}
+    window.USER_META = {{ user_meta | tojson }};
+    window.intercomSettings = {
+      app_id: "fiyo7fml",
+      user_id: {{ user_meta['id'] }},
+      user_hash: "{{ user_meta['intercom_hash'] }}",
+      name: "{{ user_meta['name'] }}", // Full name
+      email: "{{ user_meta['email'] }}", // Email address
+      created_at: {{ user_meta['signup_time'] }} // Signup date as a Unix timestamp
+    };
+  {% else %}
+    window.intercomSettings = {
+      app_id: "fiyo7fml"
+    };
+  {% endif %}
+</script>
+<script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/fiyo7fml';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
+  <div class="push"></div>
+  <footer class = "site-footer">
+      <div class = "wrapper-6 center">
+        <a target="_blank" href="https://github.com/minupalaniappan/gradfire/issues">File bug</a>
+        <a href="/about">About</a>
+        <a href="mailto:team@gradfire.com">Help</a>
+        {% if is_admin %}
+          <a href="/admin" id="admin_link">Admin</a>
+        {% endif %}
+        {% if user_meta %}
+          <a href="/settings">Settings</a>
+          <a href="/logout" class="logout">Sign out</a>
+        {% endif %}
+        <a id="sitemap" href="/sitemap" style = "display: none">Sitemap</a>
+      </div>
+      <div class = "center">
+        <p class = "small">
+          Gradfire is a student-run website and is not affiliated with the University of California.
+        </p>
+      </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,43 @@
+{% set page = 'signup' %}
+{% import 'common/forms.html' as forms %}
+{% set title = 'Create Account' %}
+{% set header_scripts = ['lib/chart.min.js','lib/jquery-2.2.0.min.js'] %}
+{% include 'common/header.html' %}
+<div>
+  <form action="" method="POST" id="main_form">
+    {% include 'common/errors.html' %}
+    <p>Create account</p>
+    <div>
+      <div>
+        <inputype="text" name="email" placeholder = "Enter your email (@ucdavis.edu)" />
+      </div>
+    </div>
+    <div>
+      <div>
+        <input type="password" name="password" placeholder = "Enter 8+ character password"/>
+      </div>
+    </div>
+    <div>
+      <div>
+        <input type="text" name="name" placeholder = "Enter your name"/>
+      </div>
+    </div>
+    <div class = "tab">
+      <div id = "IDstudentsTab" class = "onSelect">Students</div>
+      <div id = "IDteachersTab" class = "offSelect">Faculty and Staff</div>
+    </div>
+    <div class = "userhook student dplyes">
+      <p>Track your graduation progress</p>
+      {{ forms.majors_select(majors) }}
+    </div>
+    <div class = "userhook teacher dplno">
+      <p>Explore your department's grade and enrollment trends</p>
+      <p>Answer questions about classes</p>
+    </div>
+    <input type="hidden" name="userRole" value="student" id="userRole" />
+    <div class="form_row">
+      <input class="submit" type="submit" value="Create Account" />
+    </div>
+  </form>
+</div>
+{% include 'common/footer.html' %}

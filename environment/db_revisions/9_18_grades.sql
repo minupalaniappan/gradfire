@@ -1,0 +1,1 @@
+ALTER TABLE students_completed_courses ADD letter_grade text;

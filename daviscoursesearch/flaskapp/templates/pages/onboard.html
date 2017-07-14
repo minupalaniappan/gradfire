@@ -1,0 +1,18 @@
+{% set page = 'onboard' %}
+{% include 'common/header.html' %}
+<section id="onboard-wrapper" class="wrapper-6 padding-10">
+	<div class = "margin-5">
+        {% if request.args.get('error') == 'no_programs' %}
+        <p>Please select a major. Undeclared is an option if it applies to you.</p>
+        {% elif request.args.get('error') == 'invalid_transcript' %}
+        <p>Invalid transcript. Please upload on your computer if you are on your phone.</a></p>
+        {% endif %}
+		<form action="" method="POST">
+		    <div id = "user-role-choices" class="center">
+		    </div>
+		    <div id="user-role-detail">
+		    </div>
+		</form>
+	</div>
+</section>
+{% include 'common/footer.html' %}

@@ -1,0 +1,12 @@
+davislib/__init__.py
+davislib/models.py
+davislib/registrar.py
+davislib/schedule_builder.py
+davislib/sisweb.py
+davislib/tester.py
+davislib.egg-info/PKG-INFO
+davislib.egg-info/SOURCES.txt
+davislib.egg-info/dependency_links.txt
+davislib.egg-info/not-zip-safe
+davislib.egg-info/requires.txt
+davislib.egg-info/top_level.txt

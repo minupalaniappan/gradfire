@@ -1,0 +1,2 @@
+ALTER TABLE courses_enrollment ADD drop_count int;
+UPDATE courses_enrollment c1 SET drop_count = (WITH tmp AS (SELECT (enrolled_seats - coalesce(lag(enrolled_seats) over (order by timestamp), 0)) diff FROM courses_enrollment c2 WHERE c2.term_year = c1.term_year AND c2.term_month = c1.term_month AND c2.subject = c1.subject and c2.number = c1.number AND c2.timestamp < c1.timestamp) SELECT -1*sum(diff) FROM tmp WHERE diff < 0);

@@ -1,0 +1,33 @@
+{% set title = 'About you' %}
+{% set page = 'transcript_upload' %}
+{% set header_scripts = ['lib/jquery-2.2.0.min.js'] %}
+{% include 'common/header.html' %}
+<div class = "padding-10">
+    <div>
+      <p>About you</p>
+      <p>We want to match you with the courses you'll enjoy and do well in, so lets get to know you.</p>
+    </div>
+    <div>
+      <p>Upload your transcript</p>
+      <div>
+        <h3>1. <a target="_blank" href="https://students.ucdavis.edu/student/courses.aspx?sv=true">Visit Oasis</a></h3>
+      </div>
+      <div>
+        <h3>2. Login, and copy the whole page.</h3>
+      </div>
+      <div>
+        <h3>3. Paste your transcript into the input box below.</h3>
+      </div>
+    </div>
+    <div class = "upload_privacy"></div>
+    {% include 'common/errors.html' %}
+  <div>
+    <form action="" method="post">
+      <textarea id = "transcript_upload" name="transcript" onclick="this.focus();this.select();">
+        {{- 'Paste transcript here' -}}
+      </textarea>
+      <input type="submit" value = "Finish"/>
+    </form>
+  </div>
+</div>
+{% include 'common/footer.html' %}

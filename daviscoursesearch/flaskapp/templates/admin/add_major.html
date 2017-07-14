@@ -1,0 +1,32 @@
+
+{% include 'admin/admin-header.html' %}
+<section id="major_panel">
+  <form action="" method="POST">
+    <label>Add Major: </label><input type="text" name="major_name" /><input type="text" name="major_variant" />
+    <input type="submit" value="Add" />
+  </form>
+
+  <form action="" method="POST">
+    <label>Update Major: </label>
+    <select id="select_major_to_update" name="major_id_to_update">
+        {% for id, name, variant in majors_by_id %}
+        <option value="{{ id }}" data-name="{{ name }}" data-variant="{{ variant }}">{{ name }} -- {{ variant }}</option>
+        {% endfor %}
+    </select>
+    <input type="text" class="major_name" name="major_name" value="{{ majors_by_id[0][1] }}" /><input type="text" name="major_variant" class="major_variant" value="{{ majors_by_id[0][2] }}" />
+    <input type="submit" value="Update" />
+  </form>
+
+  <form action="" method="POST">
+    <label>Remove Major: </label>
+    <select id="select_major_to_remove" name="major_id_to_remove">
+        {% for id, name, variant in majors_by_id %}
+        <option value="{{ id }}">{{ name }} ({{ variant }})</option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Remove" />
+  </form>
+</section>
+{% include 'admin/req_templates.html' %}
+{% set footer_scripts = ['major_input.js'] %}
+{% include 'common/footer.html' %}

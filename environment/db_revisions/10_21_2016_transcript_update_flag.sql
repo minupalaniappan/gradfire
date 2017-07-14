@@ -1,0 +1,1 @@
+ALTER TABLE students ADD transcript_needs_update boolean DEFAULT true;

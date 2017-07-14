@@ -1,0 +1,162 @@
+* {
+    text-decoration: none;
+}
+
+.no-wrap {
+    white-space: nowrap;
+}
+
+a {
+    color: $primary;
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+%base {
+    font-family: $base-font;
+}
+
+%logo {
+    font-family: $logo-font;
+}
+
+@mixin logo($size) {
+    @extend %logo;
+    color: $logo;
+    font-size: 25px;
+    font-weight: $bold-font;
+    letter-spacing: $logo-bold-space;
+}
+
+.logo {
+    @include logo(25px);
+}
+
+.index-banner {
+    font-size: 39px;
+    color: $dark-gray;
+    text-align: center;
+    font-weight: 500;
+}
+
+.light-banner {
+  color: $light-gray;
+}
+
+@mixin dropDown($size) {
+    font-weight: $large-font;
+    color: $dark-gray;
+    font-size: $size;
+}
+
+
+@for $p from 1 through 6 {
+	h1, h2, h3 {
+		font-weight: $black-font;
+	}
+	h4, h5, h6 {
+		font-weight: $large-font;
+	}
+
+    h#{$p} {
+    	font-family: $base-font;
+	    letter-spacing: $base-line-space;
+	    word-spacing: $base-line-space;
+        font-weight: bold;
+        font-size: #{3*(15/$p)}px;
+        color: $dark-gray;
+    }
+    h2 {
+    	font-family: $base-font;
+	    letter-spacing: $base-line-space;
+	    word-spacing: $base-line-space;
+        color: $logo;
+    }
+}
+
+
+p, a, li, label {
+	font-family: $base-font;
+    letter-spacing: $base-line-space;
+    word-spacing: $base-line-space;
+    &.large {
+        color: $dark-gray;
+        font-size: 25px;
+        line-height: 1.2em;
+        font-weight: $large-font;
+    }
+    &.regular {
+        color: $dark-gray;
+        font-size: 16px;
+        line-height: 1.5em;
+        font-weight: $regular-font;
+    }
+    &.small {
+        color: $gray;
+        font-size: 15px;
+        line-height: 1.8em;
+        font-weight: $regular-font;
+    }
+    &.tab {
+        color: $navy-gray;
+        font-size: 13px;
+        font-weight: $large-font;
+    }
+    &.heavy {
+        font-weight: $bold-font;
+    }
+    &.selected {
+	    font-weight: $bold-font;
+        color: $logo;
+        border-bottom: 2px solid;
+	}
+    &.link {
+        color: $primary;
+    }
+    &.link:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    &.metric {
+        color: $logo-alt;
+        font-weight: 600;
+        font-size: 14px;
+    }
+    &.small-link {
+        color: $primary
+    }
+    &.small-link:hover {
+        cursor: pointer;
+    }
+}
+
+.gray {
+    color: $super-light-gray;
+}
+
+.type:hover {
+    cursor: text;
+}
+
+.hover:hover {
+    cursor: pointer;
+}
+
+.oneline-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.spanbold {
+    font-weight: 600;
+}
+
+.span-logo {
+    color: $logo !important;
+}
+
+.span-green {
+    color: $green !important;
+}

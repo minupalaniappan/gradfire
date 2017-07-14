@@ -1,0 +1,22 @@
+{% include 'admin/admin-header.html' %}
+<form id="update_major_form" action="" method="POST">
+  <label for="major">Major: </label>
+  <select id="select_major" name="major_id">
+      <option>--</option>
+      {% for id, name, variant in majors_by_id %}
+      <option value="{{ id }}">{{ name }} ({{ variant }})</option>
+      {% endfor %}
+  </select>
+  <p id="major_total_units">Total units: <span id="major_units_low">0</span> - <span id="major_units_hi">0</span></p>
+  <input type="hidden" name="major_req_json" id="major_req_json" />
+  <input type="submit" id="update_major" value="Update" />
+</form>
+
+
+<div id="requirements">
+  <a id="add_root_req" href="javascript: void(0)">Add Group</a>
+</div>
+
+{% include 'admin/req_templates.html' %}
+{% set footer_scripts = ['major_req_input.js'] %}
+{% include 'common/footer.html' %}

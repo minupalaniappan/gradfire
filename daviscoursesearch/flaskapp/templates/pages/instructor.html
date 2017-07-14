@@ -1,0 +1,17 @@
+{% set title = instructor['name'] ~ ' - UC Davis' %}
+{% set page = 'instructor' %}
+{% set header_scripts = ['lib/jquery-2.2.0.min.js'] %}
+
+{% include 'common/header.html' %}
+
+<div class = "wrapper-12 padding-10">
+	<section id = "term-list" class = "card-col column-12"></section>
+</div>
+<script type="text/json" id="coursesByTermJson">
+{{ courses_by_term | tojson }}
+</script>
+<script type="text/javascript">
+	window.taught = JSON.parse(document.getElementById('coursesByTermJson').innerText);
+</script>
+
+{% include 'common/footer.html' %}

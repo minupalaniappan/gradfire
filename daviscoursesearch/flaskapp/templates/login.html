@@ -1,0 +1,43 @@
+{% set title = 'Login' %}
+{% set page = 'login' %}
+{% set header_scripts = ['chart.min.js','jquery-2.2.0.min.js'] %}
+{% include 'common/header.html' %}
+
+<div class="wrapper-4 padding-10">
+    {% if request.args['verified'] == 1 %}
+        <section id="confirmation">Verified</section>
+    {% endif %}
+    <div class = "column-12">
+        {% if env == 'dev' %}
+        <h2 class = "padding-1 center">Log into existing account</h2>
+        <form action="/login" method="POST" id="main_form" class = "column-12 center">
+            {% include 'common/errors.html' %}
+            <div class="column-12">
+                <input class="column-6 foundation-form wrapper-6" type="text" name="email" placeholder="Email (example@school.edu)"/>
+            </div>
+            <div class="column-12">
+                <input class="column-6 foundation-form wrapper-6" type="password" name="password" placeholder="Password"/>
+            </div>
+            <div class="column-12">
+                <div class = "column-6 wrapper-6 right">
+                    <input type="checkbox" id="remember_me" name="remember_me" checked />
+                    <p for="remember_me" class = "regular" style = "display: inline-block;">Keep me logged in</p>
+                </div>
+            </div>
+            <div class="column-12">
+                <input type="submit" class="column-6 load padding-1 margin-1 wrapper-6" value="Go">
+            </div>
+        </form>
+        <div class="column-12">
+            <div class = "column-6 wrapper-6">
+                <div class = "width-5 left inline" style = "width: 40%"><a href="/"><i class="fa fa-long-arrow-left"></i>Back home</a></div>
+                <div class = "width-5 right inline" style = "width: 58%"><a href="/send_password_reset" id="forgot_password">Forgot your password?</a></div>
+            </div>
+        </div>
+        <div class = "center column-12"><a href = "/" class = ""></a><div id="g-signin2" class="google-signin inline middle "></div></div>
+        <div class = "customGoogleSignin column-12">SIGN IN WITH GOOGLE</div>
+        {% endif %}
+    </div>
+</div>
+
+{% include 'common/footer.html' %}

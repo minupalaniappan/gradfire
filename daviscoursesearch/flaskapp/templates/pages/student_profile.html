@@ -1,0 +1,27 @@
+{% set title = user_meta['name'] + " | Gradfire" %}
+{% set page = 'profile' %}
+{% set header_scripts = ['lib/chart.min.js','lib/jquery-2.2.0.min.js', 'lib/underscore.js', 'lib/chart.min.js'] %}
+{% include 'common/header.html' %}
+
+
+<section class = "wrapper-12 padding-10">
+    <div id = "transcript_warning"></div>
+    <div class = "column-8">
+        <p class="heavy tab column-12">YOUR EXPERIENCE</p>
+    	<div class = "column-12 card-col" id = "promptBar">
+    	</div>
+        <p class="heavy tab column-12">COMPLETED COURSES</p>
+    	<div class = "column-12 card-col" id = "dataCompleted">
+    	</div>
+    </div>
+    <div class = "column-3" id = "profileProvider" style = "margin-top: 13px">
+    </div>
+</section>
+
+
+
+
+<script type="text/javascript">
+  window.USER_META = JSON.parse('{{ user_meta['json'] | safe }}');
+</script>
+{% include 'common/footer.html' %}

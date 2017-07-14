@@ -1,0 +1,1 @@
+update courses set prerequisites=regexp_replace(prerequisites,E'\n',' ', 'g') where position(E'\n' in prerequisites) != 0 and prerequisites is not null;

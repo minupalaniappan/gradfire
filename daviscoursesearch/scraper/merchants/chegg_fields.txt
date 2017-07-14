@@ -1,0 +1,18 @@
+chegg fields
+ offer_fields = {
+      'book_id': book_id,
+      'product_id': None,
+      'price_with_shipping': price_with_shipping,
+      'list_price': offer['BookInfo']['ListPrice'],
+      'merchant': 'chegg'
+    }
+
+amazon fields
+lists total items available
+
+- condition new|used|collectible|rental
+
+- merchant meta:
+  - total new by condition
+
+

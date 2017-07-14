@@ -1,0 +1,15 @@
+-e git://github.com/andyh2/davislib.git#egg=davislib
+raven
+raven[flask]
+inflect
+selenium
+psycopg2
+eventlet
+flask
+passlib
+sendgrid
+xmltodict
+redis
+icalendar
+slackclient
+timeago

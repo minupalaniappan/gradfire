@@ -1,0 +1,37 @@
+{% set page = 'results' %}
+{% set header_scripts = ['lib/jquery-2.2.0.min.js', 'loader.js', 'lib/chart.min.js'] %}
+{% set title = request.args.get('q') + " | Gradfire" %}
+{% include 'common/header.html' %}
+
+{% import 'common/term_navigation.html' as term_nav with context %}
+
+{% macro filter_checkbox(name, default=False) %}
+	<input class="filter_checkbox" type="checkbox" name="{{ name }}" {{ 'checked' if request.args.get(name) == '1' or (request.args.get(name) != '0' and default) }} />
+{% endmacro %}
+
+<section>
+	<section class="wrapper-12 padding-10">
+		<div class="column-3">
+			<div>
+				<div id = "searchTools">
+				</div>
+			</div>
+		</div>
+		<ul class = "column-9">
+			<div class = "column-12" id = "results_list">
+			</div>
+		</ul>
+	</section>
+</section>
+<script type="text/json" id="results_json">
+{{ courses | tojson }}
+</script>
+<script type="text/json" id="instructors_json">
+{{ instructors | tojson }}
+</script>
+<script type="text/javascript">
+	window.INSTRUCTORS = JSON.parse(document.getElementById('instructors_json').innerText);
+    window.RESULTS = JSON.parse(document.getElementById('results_json').innerText);
+    window.AREAS = JSON.parse('{{ ge_codes_by_area | tojson }}');
+</script>
+{% include 'common/footer.html' %}

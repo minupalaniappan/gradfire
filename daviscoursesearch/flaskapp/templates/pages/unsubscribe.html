@@ -1,0 +1,10 @@
+<p>Unsubscribe from Gradfire mailings</p>
+
+{% if success %}
+Unsubscribed
+{% else %}
+<form action="" method="POST">
+    <input type="text" name="email" />
+    <input type="submit" value="Unsubscribe" />
+</form>
+{% endif %}

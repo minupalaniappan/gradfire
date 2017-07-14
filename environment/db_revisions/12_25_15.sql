@@ -1,0 +1,1 @@
+ALTER TABLE meetings DROP time_tba;

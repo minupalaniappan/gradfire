@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Citris Fall 2016</title>
+	<link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,400i,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Sanchez" rel="stylesheet">
+	<style type="text/css">
+		body {
+			max-width: 800px;
+			margin: 0 auto;
+			font-family: Lato;
+		}
+		p {
+			margin: 0px;
+		}
+		a {
+			color: #44C1EB;
+		}
+		.logo_part_1, .logo_part_2 {
+			font-family: Montserrat;
+			font-size: 30px;
+		}
+
+		.logo_part_1 {
+			font-weight: 400;
+			color: black;
+		}
+
+		.logo_part_2 {
+			font-weight: 700;
+			color: #5AA3E8;
+		}
+		.part {
+			padding: 20px 0px;
+			border-bottom: 1px solid #F2F2F2;
+		}
+		.banner {
+			text-align: center;
+		}
+		.flag {
+			padding: 10px 0px;
+			text-align: center;
+		}
+		.header_section {
+			font-size: 28px;
+			color: #424242;
+			text-align: center;
+			font-weight: 700;
+			padding-bottom: 10px;
+		}
+		.subheader {
+			font-size: 20px;
+			color: #B0B0B0;
+			text-align: center;
+			font-weight: 400;
+		}
+		iframe {
+			border-radius: 3px;
+			margin: 15px 0px;
+		}
+		input {
+			width: 350px;
+			padding: 10px 15px;
+			border-radius: 3px;
+			border: 1px solid #DBDBDB;
+			color: #949494;
+			font-size: 15px;
+			display: block;
+			margin: 10px auto 10px auto;
+		}
+		.login {
+			border-radius: 3px;
+			background-color: #478AF5;
+			font-weight: 400;
+			color: white;
+			width: 150px;
+			padding: 10px 0px;
+			font-size: 1.5em;
+			border: none;
+			display: block;
+			margin: 10px auto 10px auto;
+		}
+		a.loginlink {
+			text-decoration: none;
+			display: block;
+			width: 150px;
+    		margin: 0 auto;
+		}
+		.meta {
+			color: #B0B0B0;
+			font-size: 14px;
+			margin: 10px 0px;
+			margin-right: 320px;
+		}
+		.metrics {
+			width: 380px;
+    		margin: 0 auto;
+		}
+		.metric_head {
+			font-family: Sanchez;
+			font-size: 35px;
+			color: #333;
+		}
+		.metric_sub_head {
+			font-family: Sanchez;
+			font-size: 25px;
+			color: #B0B0B0;
+		}
+		.smaller {
+			font-size: 18px;
+			color: #37DEAF;
+			padding: 15px 0px;
+		}
+		.color_highlight {
+			color: #37DEAF;
+		}
+		.storyline {
+			font-family: Sanchez;
+
+			font-size: 17px;
+			color: #A1A1A1;
+			line-height: 2em;
+			text-align: left;
+			padding: 10px 0px;
+		}
+		img {
+			max-width: 800px;
+			border: 1px solid #DBDBDB;
+			border-radius: 2px;
+			margin: 10px 0px;
+		}
+	</style>
+</head>
+<body>
+	<div class = "part banner">
+		<p class = "logo_part_1">dis<span class = "logo_part_2">course</span></p>
+		<p class = "subheader">Maximize your degree by taking the classes you love</p>
+	</div>
+	<div class = "part demo">
+		<div class = "flag">
+			<p class = "header_section">Watch it in action</p>
+			<p class = "subheader">Let's take you around the service</p>
+		</div>
+		<iframe width="800" height="450" src="https://www.youtube.com/embed/ouWmc3jHkyk" frameborder="0" allowfullscreen></iframe>
+	</div>
+	<div class = "part try_it_out">
+		<div class = "flag">
+			<p class = "header_section">Try it out</p>
+			<p class = "subheader">We're live, so check it out</p>
+		</div>
+		<div class = "flag">
+			<a class="loginlink" href="https://www.gradfire.com/login" target="_blank"><button class = "login">Login</button></a>
+			<p class = "subheader">Copy paste these values when you login</p>
+			<div>
+			<p class = "meta">Username</p>
+			<input type="text" onclick="this.setSelectionRange(0, this.value.length)" onchange="javascript:function(e){ e.preventDefault() }" value="achaden+demo@ucdavis.edu" />
+			<p class = "meta">Password</p>
+			<input type="text" onclick="this.setSelectionRange(0, this.value.length)" onchange="javascript:function(e){ e.preventDefault() }" value="citrisfoundry" />
+			</div>
+		</div>
+	</div>
+	<div class = "part stats">
+		<div class = "flag">
+			<p class = "header_section">The numbers</p>
+			<p class = "subheader">Launched February, 2016 at the University of California, Davis</p>
+		</div>
+		<div class = "metrics">
+			<p class = "metric_head">217<span class = "metric_sub_head">k page views</span></p>
+			<p class = "metric_head">19.4<span class = "metric_sub_head">k unique visitors</span></p>
+			<p class = "metric_head">1.5<span class = "metric_sub_head">k registered students</span></p>
+			<p class = "metric_head">6<span class = "metric_sub_head"> average views per session</span></p>
+			<p class = "metric_head">5<span class = "metric_sub_head"> minute average visit time</span></p>
+			<p class = "metric_sub_head smaller">Visits from UC Office of the President, CSU Office of the Chancellor</p>
+		</div>
+	</div>
+	<div class = "part origins">
+		<div class = "flag">
+			<p class = "header_section">How it all started</p>
+			<p class = "subheader">We just wanted to take classes we would like</p>
+			<p class = "storyline">UC Discourse was envisioned after Andy built an <a href="https://github.com/andyh2/davislib">open-source library</a> to interface with the UC Davis course catalog and registration system. An architect at heart, Andy noticed that the University lacked sufficient online resources to help students navigate their degree path. In <span class = "color_highlight">September of 2015</span>, Andy began work with Minu on UC Discourse, automating the counseling proccess and enabling students to interact with instructors and fellow students. We launched in <span class = "color_highlight">February of 2016</span> and subsequently<span class = "color_highlight"> won a grant from the <a href="https://efund.ucdavis.edu/portfolio/">ASUCD E-Fund</a>.</span></p>
+
+		</div>
+	</div>
+	<div class = "part future">
+		<div class = "flag">
+			<p class = "header_section">Our vision</p>
+			<p class = "subheader">Connect the academic world and empower student curiosity</p>
+			<p class = "storyline">We plan to launch our new installment of UCDiscourse this <span class = "color_highlight">October</span>. Packed with new community features, students will be able to ask questions in an engaging environment, provide responses based on their experiences in the classroom, and build relationships with faculty who are interested in empowering the student body. Using <span class = "color_highlight">student uploaded transcripts</span>, we can connect students to the right individuals. So now, every student, faculty member or administrator <span class = "color_highlight">becomes an online counselor</span>.</p>
+			<p class="storyline">After we launch and promote our new version at UC Davis, we will be gearing up for a multi-university launch at other UCs and large research institutions.</p>
+		</div>
+	</div>
+	<div class = "part future">
+		<div class = "flag">
+			<img src="img/course.png">
+			<img src="img/profile.png">
+			<img src="img/single.png">
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+.children {
+  margin: 10px 10px 10px 30px; }
+
+.children_contents {
+  display: table;
+  border-left: 1px solid #000;
+  border-top: 1px solid #000; }
+
+.rel_on {
+  font-weight: bold;
+  color: #000; }
+
+.rel_off {
+  color: rgba(0, 0, 0, 0.5); }
+
+#major_panel > form {
+  display: block;
+  margin-bottom: 20px; }
+
+/*# sourceMappingURL=admin.css.map */

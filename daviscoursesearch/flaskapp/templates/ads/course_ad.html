@@ -1,0 +1,87 @@
+{% set page = 'course_ad' %}
+{% set header_scripts = ['lib/chart.min.js', 'lib/jquery-2.2.0.min.js', 'lib/underscore.js'] %}
+{% set title = course['subject'] ~ ' ' ~ course['number'].lstrip('0') ~ ' ' ~ term_session ~ ' ' ~ session.get('term_year') %}
+{% include 'common/header.html' %}
+
+{% macro section_card(section) %}
+  <li>
+    <div>
+      <p class = "section_code">{{ section['section'] }} ({{ section['available_seats'] }} open seats)</p>
+    </div>
+    <div>
+      <ul class="section_meetings">
+      {% for meeting in section['meetings'] %}
+        <li>
+          {{ ''.join(meeting['days']) }} {{ meeting['start_time'] }} - {{ meeting['end_time'] }}
+        </li>
+      {% endfor %}
+      </ul>
+    </div>
+      <div class="section_add_delete">
+        {% set section_is_added = (added_courses and section['id'] in added_courses['sections']) %}
+        <div class = "del_btn" {{ 'style="display: none"' | safe if not section_is_added }}>
+          <span class="update_added_courses del_course_btn" id = "colorDel" data-courseid="{{ section['id'] }}">Remove</span>
+        </div>
+        <div class = "add_btn" {{ 'style="display: none"' | safe if section_is_added }} >
+          <span class="update_added_courses add_course_btn" id = "colorAdd" data-courseid="{{ section['id'] }}">Add</span>
+        </div>
+      </div>
+  </li>
+{% endmacro %}
+<h1>Learn about UCD classes on <span class="domain">gradfire.com</span></h1>
+<div>
+  <p>{{ course['subject'] }} {{ course['number'].lstrip('0') }}</p>
+  <p>{{ course['title'] }}</p>
+</div>
+
+<div class = 'courseContainer' id = "databacking">
+  <div>
+    {% if course['grades'] %}
+    <section id="grades">
+      <div id = "wrapcontainer">
+        <div class = "title_container">
+          <p class="headerForData">Historical Grades</p>
+          <div class = "select_container">
+            <div class = "selectform">
+              <select id = "select_teacher_per_term_data" name="historical_data_seperate">
+              </select>
+            </div>
+            <div class = "selectform">
+                <select id = "per_term_data" name = "fetch_per_term_data"></select>
+            </div>
+          </div>
+        </div>
+        <div class = "analytics_container">
+          <div class = "data_section" id = "grade_spread">
+          </div>
+          <div class = "canvas_map">
+          </div>
+        </div>
+      </div>
+    </section>
+    {% endif %}
+    {% if course['live_enrollment'] or course['historical_enrollment'] %}
+    <section id="enrollment">
+      <div id = "enrollmentcontainer">
+        <p class = "headerForData" id = 'enrollmenttextcontainer'>{{ 'Live' if course['live_enrollment'] else course['historical_enrollment']['session'].title() ~ ' ' ~ course['historical_enrollment']['term_year'] }} Enrollment</p>
+
+        <canvas id="enrollment_canvas"></canvas>
+      </div>
+    </section>
+  {% else %}
+    <section id="enrollment">
+        <p class = "headerForData" id = 'enrollmenttextcontainer' style = "font-size: 20px;">Enrollment unavailable</p>
+    </section>
+    {% endif %}
+  </div>
+</div>
+<div id="logofooter">
+          <a href="{% if 'user_id' in session %} /profile {% else %} / {% endif %}"><p class = "logopt1">dis<span class = "logopt2">course</span></p>
+        </div>
+</div>
+<script type="text/javascript">
+  window.ADDED_COURSES = JSON.parse('{{ added_courses['json'] | safe }}');
+  window.COURSE = JSON.parse('{{ course['json'] | safe }}');
+  window.STUDENT_COMPLETION = JSON.parse('{{ student_completion['json'] | safe if student_completion else "{}" }}');
+</script>
+{% include 'common/footer.html' %}

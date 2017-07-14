@@ -1,0 +1,13 @@
+{% include 'common/header.html' %}
+<div>
+  <p>Subjects for {{ subject_term_session ~ ' ' ~ subject_term_year }}</p>
+  <ul>
+  {% for subject, code in subjects.items() %}
+    {% set query = subject.replace(' ', '+') ~ '+' ~ subject_term_session ~ '+' ~ subject_term_year %}
+    <li>
+      <a href="/search?q={{ query }}">{{ subject }}</a>
+    </li>
+  {% endfor %}
+  </ul>
+</div>
+{% include 'common/footer.html' %}
