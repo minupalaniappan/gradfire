@@ -1,0 +1,97 @@
+{% set page = 'course' %}
+{% set header_scripts = ['lib/moment.min.js', 'lib/jquery-2.2.0.min.js', 'lib/underscore.js', 'loader.js', 'lib/bootstrap.min.js', 'lib/chart.min.js'] %}
+{% set title = course['subject'] ~ ' ' ~ course['number'].lstrip('0') + " | Gradfire" %}
+{% include 'common/header.html' %}
+
+<section class = "wrapper-12 padding-10">
+    <div>
+        <div class="column-4 paddingNoneHorizontal">
+            <div>
+                <div class = "column-12 card-col">
+                    <div class = "column-12">
+                        <p class = "tab heavy padding-1">Title</p>
+                        <p class = "small">{{ course['title'] }}</p>
+                    </div>
+                    <div class = "column-12">
+                        <p class = "tab heavy padding-1">SJA Activity</p>
+                        <div id = "sja_activity"></div>
+                    </div>
+                    <div class = "column-12">
+                        <p class = "tab heavy padding-1">Bio</p>
+                        <p class = "small">{{ course['description'] }}</p>
+                    </div>
+                    {% if course['prerequisites'] %}
+                    <div class = "column-12">
+                        <p class = "tab heavy padding-1">Prerequisites</p>
+                        <p class = "small">{{ course['prerequisites'] }}</p>
+                    </div>
+                    {% endif %}
+                    <div>
+                        <div class = "column-6">
+                            <p class = "tab heavy">Units</p><p class = "small">{{ course['units_frmt'] }}</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class = "column-6">
+                            <p class = "tab heavy padding-1">Terms Offered</p><p class = "small">{{ course['term_session'] }} {{ course['term_year'] }}
+                            {% if course['latest_offering'] %}
+                            , {{ course['latest_offering']['session'] }} {{ course['latest_offering']['term_year'] }}
+                            {% endif %}</p>
+                        </div>
+                        {% if course['ge_areas']|length > 0 %}
+
+                        <div class = "column-6">
+                            <p class = "tab heavy padding-1">Fulfillments</p>
+                        {% for ge in course['ge_areas'] %}
+                            <p class = "small">{{ ge }}</p>
+                        {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class = "column-12 card-col">
+
+                    <p class = "tab heavy padding-1">Instructors for {{ course['term_session'] }} {{ course['term_year'] }}</p>
+                    {% if course['instructors'] | length == 0 %}
+                        <p class="regular">TBA</p>
+                    {% else %}
+                        {% for instructor in course['instructors'] %}
+                            <a href="{{ instructor['url'] }}" class = "column-12 paddingNoneHorizontal">{{ instructor['name'] }}</a>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+            <div>
+                <div class = "column-12">
+                    <section>
+                        <p class="tab heavy padding-1">RELATED COURSES</p>
+                    </section>
+                    <div>
+                        <ul>
+                            {% for related in course['related'] %}
+                                <li class="padding-1"><a href="{{ related['url'] }}?src=related" class="{{ 'completed' if related['user_completed_course'] else '' }}">{{ related['subject'] ~ related['number'] ~ ': ' ~ related['title'] }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column-8">
+            <div id = "dataReviews" class="column-12 paddingNoneVertical paddingNoneHorizontal card-col">
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="text/json" id="course_json">
+{{ course['json'] | safe }}
+</script>
+<script type="text/json" id="student_completion">
+{{ student_completion['json'] | safe if student_completion else "{}" }}
+</script>
+<script type="text/javascript">
+    window.COURSE = JSON.parse(document.getElementById('course_json').innerText);
+    window.STUDENT_COMPLETION = JSON.parse(document.getElementById('student_completion').innerText);
+</script>
+
+{% include 'common/footer.html' %}

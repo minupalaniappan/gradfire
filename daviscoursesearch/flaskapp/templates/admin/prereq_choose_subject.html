@@ -1,0 +1,15 @@
+{% include 'admin/admin-header.html' %}
+{% import 'common/forms.html' as forms with context %} {# context includes subjects #}
+    <div id="prereqChooseTerm">
+    {{ forms.subjectSelect() }}
+    </div>
+    <script type="text/javascript">
+        var selectContainer = document.getElementById('prereqChooseTerm');
+        var subjectSelect = selectContainer.getElementsByTagName('select')[0];
+        subjectSelect.addEventListener('change', function(e) {
+            var subject = e.target.value;
+            window.location.assign(window.location + subject);
+        });
+
+    </script>
+{% include 'common/footer.html' %}

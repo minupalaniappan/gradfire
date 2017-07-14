@@ -1,0 +1,139 @@
+skip to main contentskip student header information
+My UC Davis  seperator  OASIS
+ Andy
+Student Photo
+Haden, Andrew Clinton ("Andy")
+912288473
+achaden@ucdavis.edu
+Level:  Undergraduate
+Major(s):
+Computer Science ( LS, BS )
+In good academic standing
+Sophomore (65.00 units completed)
+Active Student (Fall Quarter 2015)
+Home
+Academic Record
+Advising Record
+Degree Worksheets
+Forms & Petitions
+GPA Charts & Tools
+Courses | Exams & Events | Holds | Prerequisites | Academic Histories
+  Courses
+Undergraduate Courses
+Columns:  4 of 7 selected Group By:
+
+Term
+Coursegit s
+Units
+Grade
+GE
+ Fall Quarter 2013
+  201310  (ECS TR1) - APCA - ADV PLAC Computer Science A (score: 5) 2.00  P
+  201310  (ENL 003) - APEL - ADV PLAC English Language (score: 4) 4.00  P
+  201310  (HIS 017A) - APAH - ADV PLAC American History (score: 3)  4.00  P
+  201310  (HIS 017B) - APAH - ADV PLAC American History (score: 3)  4.00  P
+  201310  (UWP 001) - APEL - ADV PLAC English Language (score: 4) 4.00  P
+GE3 (WE,OL)
+ Fall Quarter 2014 (Term GPA: 2.000)
+  201410  ECS 030 - Programming&Prob Solving  4.00  B+
+GE3 (QL,SE)
+  201410  (MAT 021A) - APMB - ADV PLAC Math: Calculus-BC (score: 5) 4.00  P
+  201410  (MAT 021B) - APMB - ADV PLAC Math: Calculus-BC (score: 5) 4.00  P
+  201410  MAT 021C - Calculus 4.00  B-
+GE3 (QL,SE)
+  201410  PHE 001 - Road Cycling - Int  0.50  P
+  201410  PHE 001 - Weight Training-Beg 0.50  P
+GE3 (SL,AH,SE,WE)
+ Winter Quarter 2015 (Term GPA: 3.554)
+  201501  COM 010D - Master Authors 2.00  P
+  201501  ECS 040 - Software &Obj-Orient Prg  4.00  A-
+GE3 (SE,VL)
+  201501  MAT 021D - Vector Analysis  4.00  B+
+GE3 (QL,SE)
+  201501  SAS 025V - Global Climate Change  3.00  A-
+GE3 (DD,SL,OL,QL,WC,SE,SS,VL,WE)
+ Spring Quarter 2015 (Term GPA: 3.445)
+  201503  ECS 020 - Discrete Math for CS  4.00  B
+GE3 (QL,SE)
+  201503  ECS 050 - Machine Dependent Prog  4.00  A-
+GE3 (SE)
+  201503  ECS 099 - Special Study 3.00  P
+  201503  MAT 022A - Linear Algebra 3.00  A-
+GE3 (QL,SE)
+  201503  MAT 022AL - Linear Algebra Comp Lab 1.00  P
+GE3 (QL,SE)
+  201503  MUS 140 - University Jazz Band  2.00  P
+ Fall Quarter 2015
+  201510  ECS 060 - Data Structures and Prog  4.00
+GE2 (SciEng)
+GE3 (QL,SE)
+  201510  LIN 001 - Intro Linguistics 4.00
+GE2 (ArtHum,SocSci,Wrt)
+GE3 (AH,SS)
+  201510  MUS 140 - University Jazz Band  2.00
+  201510  PHY 009A - Classical Physics  5.00
+GE2 (SciEng)
+GE3 (SE)
+ Winter Quarter 2016
+  201601  MUS 010 - Intro Music Lit 4.00
+GE2 (ArtHum,Wrt)
+GE3 (AH,VL,WC,WE)
+  201601  PHY 009B - Classical Physics  5.00
+GE2 (SciEng)
+GE3 (SE)
+  201601  SAS 020 - Genetics and Society  4.00
+GE2 (SciEng,SocSci,Wrt)
+GE3 (OL,SL,WE,SE,SS)
+Academic Totals (Undergraduate)
+TOTAL UNITS COMPLETED: 65.00 (93.00 projected)
+UCD UPPER DIVISION UNITS COMPLETED: 2.00
+UC GPA: 2.970
+EXCLUDED REPEAT: 0.00
+Selection Totals (Estimated)
+Total:
+Units:
+0.00
+GPA:
+NaN
+Bal:
+0.0
+Upper Division:
+Units:
+0.00
+GPA:
+NaN
+Bal:
+0.0
+Lower Division:
+Units:
+0.00
+GPA:
+NaN
+Bal:
+0.0
+UCD:
+Units:
+0.00
+GPA:
+NaN
+Bal:
+0.0
+UCD Upper Division:
+Units:
+0.00
+GPA:
+NaN
+Bal:
+0.0
+UCD Lower Division:
+Units:
+0.00
+GPA:
+NaN
+Bal:
+0.0
+ repeated, exclude from GPA (projected)
+ repeated, include in GPA (projected)
+ most recent repeat, include in GPA (projected)
+Copyright © UC Regents, Davis campus. All rights reserved.
+Developed by the OASIS Programming team. Contact Us

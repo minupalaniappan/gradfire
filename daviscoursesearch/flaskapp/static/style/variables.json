@@ -1,0 +1,57 @@
+{
+    "bg-dark-blue": "#2A91F0",
+    "default": "#333333",
+    "ultra-light-gray": "#F5F5F5",
+    "super-light-gray": "#AAADAD",
+    "green": "#56B68B",
+    "highgreen": "#53d45e",
+    "light-gray": "#999999",
+    "navy-gray": "#4D5865",
+    "navy-blue": "#586B80",
+    "viewer-blue": "#52D4FF", 
+    "gray": "#999",
+    "dark-gray": "#484848",
+    "super-light-blue": "#AADCFF",
+    "light-blue": "#B9C7D7",
+    "primary": "#4A90E2",
+    "secondary": "#F8C032",
+    "primary-dark": "#8C97A4",
+    "red": "#D0021B",
+    "tiny-width": "320px",
+    "narrow-width": "375px",
+    "medium-width": "768px",
+    "large-width": "850px",
+    "layout-width": "1200px",
+    "nav-black": "#39424e",
+    "nav-black-bg": "#2e363f",
+    "header-gray": "#C2C7D0",
+    "logo": "#FF4262",
+    "logo-alt": "#769aff",
+    "nav-bottom": "#F8F9FD",
+    "max-light-gray": "#FAFAFA",
+    "base-font": "'Work Sans', sans-serif",
+    "logo-font": "Quicksand",
+
+    "base-line-space": "-0.5px",
+    "logo-regular-space": "-4.0999999px",
+    "logo-bold-space": "-2.6px",
+
+
+    "condense": "0.5em",
+    "default": "1em",
+    "medium": "1.5em",
+    "large": "2em",
+
+    "light-font": "300",
+    "regular-font": "400",
+    "large-font": "500",
+    "bold-font": "600",
+    "black-font": "600",
+
+
+    "max-width": "1200px",
+
+    "foundation-border": "1px solid",
+    "cards": "0 1px 4px rgba(0, 0, 0, 0.1)"
+
+}

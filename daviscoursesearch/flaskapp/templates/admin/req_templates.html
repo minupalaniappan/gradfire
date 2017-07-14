@@ -1,0 +1,36 @@
+{% import 'common/forms.html' as forms with context %}
+<div class="group req_item" id="group_template" style="display: none">
+  <div>
+    <a class="remove_self" href="javascript: void(0)">(-)</a>
+    <input type="text" class="group_name" value="Group name" />
+    <a href="javascript: void(0)" class="rel rel_on">AND</a>
+    <span> / </span>
+    <a href="javascript: void(0)" class="rel rel_off">OR</a>
+  </div>
+  <div>
+    <label>Min. courses: </label><input class="min_courses" type="text" size="2" />
+  </div>
+  <div class="units">
+    <label>Units: </label><input class="min_units" type="text" size="2" readonly /> - <input class="max_units" type="text" size="2" readonly /> <span class="override_units" style="display: none">(Override: <input type="checkbox" />)</span>
+  </div>
+  <div class="children">
+    <div>
+      <a class="add_course_options" href="javascript: void(0)">Add Courses</a>
+      <span> / </span>
+      <a class="add_group" href="javascript: void(0)">Add Group</a>
+    </div>
+    <div class="children_contents">
+    </div>
+  </div>
+</div>
+
+<div class="course req_item" id="course_template" style="display: none">
+  <a class="remove_self" href="javascript: void(0)">(-)</a>
+  {{ forms.subjectSelect() }}
+  <input class="number_input" type="text" value="Number" size="6" />
+</div>
+
+<div class="course_options req_item" id="course_options_template" style="display: none">
+  <a class="remove_self" href="javascript: void(0)">(-)</a>
+  <input class="course_options_input" type="text" />
+</div>

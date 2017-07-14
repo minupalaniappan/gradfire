@@ -1,0 +1,1 @@
+ALTER TABLE courses ADD required_materials_scraped boolean DEFAULT false;

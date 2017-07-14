@@ -1,0 +1,1 @@
+ALTER TABLE instructors ADD email text;

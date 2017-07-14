@@ -1,0 +1,15 @@
+{% set title = 'Sitemap' %}
+{% include 'common/header.html' %}
+<div>
+  <ul>
+  {% for term_year, term_month in terms %}
+    {% set term_session = term_sessions_by_month[term_month] %}
+    <li>
+      <a href="{{ url_for('subjects_for_term', term_year=term_year, term_session=term_session) }}">
+        {{- term_session ~ ' ' ~ term_year -}}
+      </a>
+    </li>
+  {% endfor %}
+  </ul>
+</div>
+{% include 'common/footer.html' %}

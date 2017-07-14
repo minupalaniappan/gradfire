@@ -1,0 +1,1 @@
+select subject, number, title, sum(waitlist_length) wl_sum from courses where term_year = 2016 and term_month = 1 and waitlist_length is not null group by suject, number, title order by wl_sum desc;

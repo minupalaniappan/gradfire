@@ -1,0 +1,18 @@
+{% set title = user_meta['name'] %}
+{% set page = 'profile' %}
+{% set header_scripts = ['lib/chart.min.js','lib/jquery-2.2.0.min.js', 'lib/underscore.js'] %}
+{% include 'common/header.html' %}
+
+<section class = "wrapper-12 padding-5">
+    <div class = "carousel wrapper-12 padding-10" id = "notes">
+    </div>
+    <div class = "carousel wrapper-12 padding-10" id = "questions">
+    </div>
+    <div class = "carousel wrapper-12 padding-10" id = "teacher_me">
+    </div>
+</section>
+
+<script type="text/javascript">
+  window.USER_META = JSON.parse('{{ user_meta['json'] | safe }}');
+</script>
+{% include 'common/footer.html' %}

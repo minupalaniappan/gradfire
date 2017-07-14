@@ -1,0 +1,73 @@
+{% set page = 'index' %}
+{% set title = 'Gradfire' %}
+{% set header_scripts = ['lib/chart.min.js','lib/jquery-2.2.0.min.js'] %}
+{% include 'common/header.html' with context %}
+{% import 'common/forms.html' as forms %}
+<div class = "bg-white border site-header">
+    <div class = "padding-3 wrapper-10">
+        <div class = "hidden">
+             <div class = "float-left left">
+                <a href = "/"><p class="logo">gradfire</p></a>
+             </div>
+             <!--<div class = "float-right right"><a href = "/" class = ""></a><div id="g-signin2" class="google-signin inline middle "></div></div>-->
+        </div>
+    </div>
+</div>
+<div class = "index site-content" style = "padding-top: 0em">
+  <div style = "background-image: url({{ url_for('static',filename='imgs/bg.png') }})">
+    <div class = "wrapper-10 padding-8">
+        <p class = "index-banner">Pick your classes in minutes</p>
+        <p class = "center large padding-2"><span style = "color: #435ca2">Grade data, course advice and easy search.</span></p>
+        <div class = "center"><a href = "/" class = ""></a><div id="g-signin2" class="google-signin inline middle "></div>
+          <div class = "continueWithGoogle customGoogleSignin inline">Continue with Google</div>
+          <p class = "regular inline margin-side-2">or<a href = "https://www.facebook.com/gradfire" target="_blank"  style = "color: #3278ca" class="margin-side-2 middle">learn more</a></p>
+        </div>
+    </div>
+  </div>
+  <div style = "color: white">
+    <div class = "wrapper-10 padding-8">
+        <p class = "index-banner" style = "color: #222; font-weight: 500">Grade data from your university</p>
+        <p class = "center large padding-2" style = "color:#AAADAD">Percentages, numbers & cutoffs.</p>
+        <div class="column-12">
+            <div>
+                <div>
+                    <div id = "example-chart" class="column-12">
+                    </div>
+                    <p class = "column-12 center regular padding-2" style = "color:#AAADAD">Grade distributions for CHE 2A in Spring of 2015. <a href = "/login">Make an account to view grades.</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class = "border-top bg-blue  column-12" style = "background-color: #f2f8ff; max-width: none">
+      <div class = "padding-3 center">
+          <h2>Course catalogs</h2>
+          <p class = "regular padding-1">Search classes at your university</p>
+          <div id = "search-box" class = "inline middle width-6">
+            <form id="searchform" class = "max-width-10 wrapper-10" action="/search">
+              {% if '1' in request.args.getlist('satisfy_major') %}
+                <input type="hidden" name="satisfy_major" value="1" />
+              {% endif %}
+              {% if '1' in request.args.getlist('satisfy_my_ge') %}
+                <input type="hidden" name="satisfy_my_ge" value="1" />
+              {% endif %}
+              <div id="homeSearch"></div>
+            </form>
+          </div>
+          <div class="padding-2 column-12 wrapper-12" id = "subjectsandcourses"></div>
+      </div>
+  </div>
+</div>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "url": "https://www.gradfire.com/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.gradfire.com/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+{% include 'common/footer.html' %}

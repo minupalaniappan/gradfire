@@ -1,0 +1,108 @@
+*,
+*:after,
+*:before {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    }
+
+.wrapper {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.wrapper:after,
+.row:after {
+      content: "";
+      display: table;
+      clear: both;
+      }
+
+[class*='column-'] {
+    float: left;
+    padding: 0.5em;
+    width: 100%;
+    min-height: 1px;
+    &[class*='wrapper-'] {
+        float: none;
+    }
+}
+
+@for $i from 1 through 12 {
+    .column-#{$i} {
+        max-width: #{1200 / 12 * $i}px;
+    }
+}
+
+@for $i from 1 through 10 {
+    .width-#{$i} {
+        width: 10% * $i;
+    }
+}
+
+@for $i from 1 through 12 {
+    .wrapper-#{$i} {
+        max-width: #{100 * $i}px;
+        &*[class^='column-']{
+            float: none;
+        }
+        margin: 0 auto;
+    }
+}
+
+@mixin alignment($type) {
+    @if $type == #{'foundation'} {
+        text-align: center;
+    }
+    @if $type == #{'card'} {
+        text-align: left;
+    }
+    @else {
+        text-align: left;
+    }
+}
+
+@media (max-width: 1200px) {
+    @for $i from 1 through 12 {
+        .column-#{$i} {
+            float: none; 
+            display: inline-block;
+            vertical-align: top;
+            max-width: #{900 / 12 * $i}px;
+        }
+        .wrapper-#{$i} {
+            text-align: center;
+            div[class^="column-"] {
+                text-align: left;
+            }
+        }
+    }
+
+}
+
+@media (max-width: 1100px) {
+    @for $i from 1 through 12 {
+        .column-#{$i} {
+            float: none; 
+            display: inline-block;
+            vertical-align: top;
+            max-width: #{800 / 12 * $i}px;
+        }
+        .wrapper-#{$i} {
+            text-align: center;
+            div[class^="column-"] {
+                text-align: left;
+            }
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    @for $i from 1 through 12 {
+        .column-#{$i} {
+            max-width: none;
+        }
+    }
+}

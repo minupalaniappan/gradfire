@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+  <title>{{ title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta charset="utf-8" />
+  <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700" rel="stylesheet">
+  <script src="https://use.fontawesome.com/c5850589aa.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style/Draft.css') ~ '?' ~ cache_buster -}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style/all.css') ~ '?' ~ cache_buster -}}">
+  {% for style in header_styles %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style/{}'.format(style)) ~ '?' ~ cache_buster-}}">
+  {% endfor %}
+
+  {% for script in header_scripts|default([]) + ['logging.js'] %}
+      <script type="text/javascript" src="{{ url_for('static', filename='js/{}'.format(script)) ~ '?' ~ cache_buster -}}"></script>
+  {% endfor %}
+
+  {% if course and course['latest_offering'] %}
+    <link href="{{ course['latest_offering']['url'] }}" rel="canonical" />
+  {% endif %}
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "url": "https://www.gradfire.com/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://www.gradfire.com/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  {% if env == 'production' %}
+    <script src="https://cdn.ravenjs.com/3.8.0/raven.min.js"
+      crossorigin="anonymous"></script>
+    <script>
+    Raven.config('https://7608018366b54a2ba4fe3c013af9ad35@sentry.io/110631').install()
+    </script>
+  {% endif %}
+  <script>
+  var referringUrl = {{ ref_url | tojson if ref_url else 'null' }};
+  {% include 'includes/bootstrap.js' %}
+  </script>
+  {% if env == 'production' %}
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-72503171-1', 'auto');
+    ga('send', 'pageview');
+    {% if user_meta -%}
+      ga('set', 'userId', {{ user_meta['id'] }});
+    {%- endif %}
+  </script>
+  {% endif %}
+  <script src="https://apis.google.com/js/platform.js?onload=googleApiInit" async defer></script>
+</head>
+<body data-page="{{ page }}" id="page_{{ page if page else 'default' }}">
+    <header class = "padding-none wrapper center site-header">
+      <div class = "left column-12">
+          <div class = "inline width-2 max-width-10 middle">
+            <a href="{% if 'user_id' in session %} /profile {% else %} / {% endif %}">
+              <p class="logo">grad<span style = "letter-spacing: -1.5px">fire<span></p>
+            </a>
+          </div>
+          <div id = "search-box" class = "inline middle width-6">
+            <form id="searchform" class = "max-width-10 wrapper-10" action="/search">
+              {% if '1' in request.args.getlist('satisfy_major') %}
+                <input type="hidden" name="satisfy_major" value="1" />
+              {% endif %}
+              {% if '1' in request.args.getlist('satisfy_my_ge') %}
+                <input type="hidden" name="satisfy_my_ge" value="1" />
+              {% endif %}
+              <div id="autocompleteSearch"></div>
+            </form>
+          </div>
+          <div id="user_actions" class = "inline width-2 max-width-10 middle">
+            {% if 'user_id' in session %}
+              {% set schedule_endpoint = '/schedule/' ~ active_term[0] ~ '/' ~ sessions[active_term[1]] %}
+                <ul>
+                   <li>
+                      <a href="/settings"><p class="tab" style = "font-size: 16px">Settings</p></a>
+                    </li>
+                    <li>
+                      <a class="logout" href="/logout"><p class="tab" style = "font-size: 16px">Logout</p></a>
+                    </li>
+                </ul>
+            {% else %}
+                <ul>
+                  <li>
+                    <div class="customGoogleSignin"><p class="tab" style = "font-size: 16px">Login</p></div>
+                  </li>
+                  <li>
+                    <a href="/"><p class="tab" style = "font-size: 16px">Join</p></a>
+                  </li>
+                </ul>
+            {% endif %}
+          </div>
+      </div>
+      <section class="padding-1 bg-blue center block">
+        <div class = "wrapper-12 column-12 left">
+          {% if page == "course" %}
+            <p class = "tab heavy padding-1 inline" style = "font-size: 20px">{{ course['subject'] ~ ' ' ~ course['number'] }}</p>
+          {% endif %}
+          {% if page == "profile" %}
+            <p class = "tab heavy padding-1 inline" style = "font-size: 20px">Profile</p>
+          {% endif %}
+          {% if page == "results" %}
+            <p class = "tab heavy padding-1 inline" style = "font-size: 20px">Search</p>
+          {% endif %}
+          {% if page == 'instructor' %}
+            <p class = "tab heavy padding-1" style = "font-size: 20px">{{ instructor['name'] }}</p>
+          {% endif %}
+        </div>
+      </section>
+    </header>
+    {% if page != "index" and page != "login" %}
+        <div id="{{ page }}_content" class = "site-content">
+    {% endif %}

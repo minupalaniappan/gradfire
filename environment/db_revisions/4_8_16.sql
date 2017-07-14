@@ -1,0 +1,1 @@
+UPDATE courses SET from_transcript = false WHERE from_transcript IS NULL;

@@ -1,0 +1,1 @@
+ALTER TABLE students ALTER session_token_checksums SET DEFAULT ARRAY[]::text[];

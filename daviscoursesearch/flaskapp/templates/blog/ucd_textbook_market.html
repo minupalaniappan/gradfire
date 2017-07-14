@@ -1,0 +1,277 @@
+{% set header_scripts = ['chart.old.js', 'chart.stacked.js'] %}
+{% set title = 'Top UC Davis Textbook Publishers' %}
+{% include 'common/header.html' %}
+<style type="text/css">
+  .sectionwidthwrapper {
+    max-width: 700px;
+    min-width: initial;
+  }
+  #padded_content {
+    padding-top: 50px;
+  }
+  .titleHeader {
+    font-family: Bold;
+    color: rgba(0,0,0,.8);
+    font-size: 30px;
+    text-align: left;
+  }
+  .subHeader {
+    font-family: Regular;
+    color: rgba(0,0,0,.44);
+    font-size: 25px;
+    width: 750px;
+    line-height: 1.3em;
+    padding: 5px 0px 5px 0px;
+  }
+  .dataContainer {
+    padding: 10px 0px 10px 0px;
+  }
+  .dataHeader {
+    font-family: Light;
+    color: #A8A8A8;
+    font-size: 23px;
+    line-height: 1.3em;
+    width: 750px;
+    padding: 5px 0px 5px 0px;
+  }
+  .textContent {
+    font-family: Regular;
+    color: rgba(0,0,0,.8);
+    font-size: 19px;
+    line-height: 1.58em;
+  }
+  canvas {
+    padding: 10px 0px 10px 0px;
+  }
+  .dataStatistics {
+    font-family: Bold;
+    color: #4A4A4A;
+    font-size: 35px;
+    text-align: left;
+    padding: 5px 0px 5px 0px;
+  }
+  .classCountList {
+    width: 500px;
+    height: 300px;
+    overflow: scroll;
+    border: 1px solid #DEDEDE;
+  }
+  .classContainer {
+    padding: 10px 0px 10px 10px;
+    border-bottom: 1px solid #DEDEDE;
+    font-size: 19px;
+    font-family: Semibold;
+    color: black;
+    text-align: left;
+  }
+  .isbn {
+    font-size: 14px;
+    font-family: Regular;
+    color: gray;
+    text-align: left;
+  }
+</style>
+<div id="padded_content" class = "sectionwidthwrapper">
+  <p class = "titleHeader">Top Textbook Publishers at UC Davis: Pearson, McGraw, Wiley</p>
+  <p class = "subHeader">Investigating the financial impact of top textbook publishers on UC Davis students</p>
+  <div class = "dataContainer">
+    <p class = "dataHeader">Top 5 Textbook Publishers on Campus by Est. % Market Share</p>
+    <canvas id="top_publisher_chart" width="700" height="300"></canvas>
+    <p class = "textContent">The top 5 publishers hold over 50% of the UC Davis textbook market, estimated using the textbooks assigned to UC Davis students during their Winter academic quarter.</p>
+    <p class="textContent">Pearson holds the largest share at an estimated 23.6%. John Wiley &amp; Sons, the publisher for which UC Davis Chancellor Linda Katehi held a board position from 2012-2014, holds 6.3% of marketshare. About 200 other publishers compete for the bottom 50% of the textbook market.</p>
+  </div>
+  <div class = "dataContainer">
+    <p class = "dataHeader">Average New/Used Book Prices for Top 5 Publishers</p>
+    <canvas id="average_grade_chart" width="700" height="300"></canvas>
+    <p class = "textContent">Publishers can use their popularity with educators to maintain high book prices.</p>
+  </div>
+  <div class = "dataContainer">
+    <p class = "dataHeader">Wiley at UC Davis</p>
+    <p class = "textContent">Chancellor Katehi's involvement with Wiley between 2012-2014 prompted Discourse to investigate the reach that Wiley has with UC Davis students.</p>
+    <p class = "textContent">Chancellor Katehi received $420,000 in compensation from Wiley.</p>
+    <p class="textContent">During winter quarter: </p>
+    <p class = "dataStatistics">49<span class = "textContent"> classes used Wiley textbooks</span></p>
+    <p class = "dataStatistics">3497<span class = "textContent"> students enrolled in classes that use Wiley textbooks</span></p>
+    <p class = "textContent" style = "font-family: Semibold; padding: 10px 0px 10px 0px;">Winter Classes requiring Wiley books</p>
+    <div class = "classCountList">
+    </div>
+  </div>
+  <div class = "dataContainer">
+    <p class = "dataHeader">Side note: Go Amazon over UCD Bookstore</p>
+    <p class = "dataStatistics">92.7%<span class = "textContent"> of Davis books available on <a href="http://amzn.to/1pqvgcI">Amazon</a></span></p>
+    <p class = "textContent">The campus bookstore consistently prices textbooks above market value. Chances are the books you need are available on <a href="http://amzn.to/1pqvgcI">Amazon</a> at a significantly lower price.</p>
+  </div>
+</div>
+<script type="text/javascript">
+  var top_publishers = ['Pearson', 'McGraw-Hill', 'Wiley', 'Kendall Hunt', 'Brooks Cole'];
+  var top_publishers_marketshare_pct = [23.7, 11.4, 6.3, 6.0, 4.5];
+  var data = {
+    labels: top_publishers,
+    datasets: [
+      {
+        label: "Est. Market Share of Top 5 UCD Publishers",
+        data: top_publishers_marketshare_pct,
+        fillColor: "rgb(90,163,232)",
+        // String or array - bar stroke color
+        strokeColor: "rgb(90,163,232)",
+        // Number or array - bar border width
+        borderWidth: 1,
+        // String or array - fill color when hovered
+        highlightFill: "#1e7dd7",
+        // String or array - border color when hovered
+        highlightStroke: "#1e7dd7",
+      }
+    ]
+  };
+  var ctx = document.getElementById('top_publisher_chart').getContext('2d');
+  var top_publisher_chart = new Chart(ctx).Bar(data,
+    {
+      animation: false,
+      ///Boolean - Whether grid lines are shown across the chart
+      scaleShowGridLines : true,
+      //Boolean - Whether to show vertical lines (except Y axis]
+      scaleShowVerticalLines: true,
+      tooltipTemplate: "<%=label %>: <%= value + '%' %>",
+      scaleLabel: "<%=  value + '%' %>"
+    }
+  );
+  top_publisher_chart.datasets[0].bars[2].fillColor = "#66DE68";
+  top_publisher_chart.datasets[0].bars[2].strokeColor = "#66DE68";
+  top_publisher_chart.datasets[0].bars[2].highlightFill = "#57BA59";
+  top_publisher_chart.datasets[0].bars[2].highlightStroke = "#57BA59";
+
+  top_publisher_chart.update();
+
+  var top_publishers_avg = ['Brooks Cole', 'McGraw-Hill', 'Pearson', 'Wiley', 'Kendall Hunt'];
+ //   (7567.5, 4254.0)),
+ // ('Wiley', (7760.54347826087, 5804.413043478261)),
+ // ('Pearson', (8719.57, 5425.65)),
+ // ('McGraw-Hill', (13255.692307692309, 8980.871794871795)),
+ // ('Brooks Cole', (14424.125, 9918.125))]
+  var top_publishers_avg_used_price = [99.18, 89.80, 54.25, 58.04, 42.54];
+  var top_publishers_avg_new_price = [144.24, 132.55, 87.19, 77.60, 75.67];
+  var avg_ctx = document.getElementById('average_grade_chart').getContext('2d');
+  var data = {
+    labels: top_publishers_avg,
+    datasets: [
+    {
+      label: "New",
+      data: top_publishers_avg_new_price,
+      fillColor: "rgb(90,163,232)",
+      // String or array - bar stroke color
+      strokeColor: "rgb(90,163,232)",
+      // Number or array - bar border width
+      borderWidth: 1,
+      // String or array - fill color when hovered
+      highlightFill: "#1e7dd7",
+      // String or array - border color when hovered
+      highlightStroke: "#1e7dd7",
+    },
+    {
+        label: "Used",
+        data: top_publishers_avg_used_price,
+        fillColor: "rgb(90,163,10)",
+        // String or array - bar stroke color
+        strokeColor: "rgb(90,163,10)",
+        // Number or array - bar border width
+        borderWidth: 1,
+        // String or array - fill color when hovered
+        highlightFill: "#49BA6D",
+        // String or array - border color when hovered
+        highlightStroke: "#49BA6D"
+
+      }
+    ]
+  };
+  var top_publishers_avg = new Chart(avg_ctx).Bar(data,
+    {
+      animation: false,
+      scaleShowGridLines: true,
+      scaleShowVerticalLines: true,
+      stacked: true,
+      multiTooltipTemplate: "<%=datasetLabel %>: <%= '$' + value %>",
+      scaleLabel: "<%= '$' + value %>"
+
+    }
+  );
+  top_publishers_avg.datasets[0].bars[3].fillColor = "#6BDAFF";
+  top_publishers_avg.datasets[0].bars[3].strokeColor = "#6BDAFF";
+  top_publishers_avg.datasets[0].bars[3].highlightFill = "#1e7dd7";
+  top_publishers_avg.datasets[0].bars[3].highlightStroke = "#1e7dd7";
+  top_publishers_avg.datasets[1].bars[3].fillColor = "#66DE68";
+  top_publishers_avg.datasets[1].bars[3].strokeColor = "#66DE68";
+  top_publishers_avg.datasets[1].bars[3].highlightFill = "#57BA59";
+  top_publishers_avg.datasets[1].bars[3].highlightStroke = "#57BA59";
+  top_publishers_avg.update();
+
+  var classes_affected = [
+   ['ARE', '106', '9780470626733', 176, 'None'],
+   ['ARE', '204B', '9781405136662', 46, 'None'],
+   ['BIS', '102', '9780471774211', 628, 'None'],
+   ['BIS', '105', '9780470570951', 185, 'None'],
+   ['CHE', '205', '9780470844168', 35, '7000'],
+   ['CRD', '244', '9780470657324', 15, '4995'],
+   ['DES', '014', '9780470533697', 72, '6000'],
+   ['EAE', '140', '9780470080245', 60, '14500'],
+   ['ECH', '161C', '9780471035442', 34, '28500'],
+   ['ECI', '114', '9781118539712', 105, 'None'],
+   ['ECI', '115', '9781118554937', 27, 'None'],
+   ['ECI', '212A', '9780470035801', 30, 'None'],
+   ['ECI', '251', '9780470760390', 30, '8800'],
+   ['EEC', '230', '9780470589489', 25, 'None'],
+   ['EME', '106', '9781118412930', 130, 'None'],
+   ['EME', '107A', '9781118881279', 63, 'None'],
+   ['EME', '107B', '9781118881279', 70, 'None'],
+   ['EME', '171', '9780470889084', 50, '16000'],
+   ['EME', '172', '9781118170519', 105, 'None'],
+   ['EMS', '002', '9780470638057', 86, '6795'],
+   ['EMS', '164', '9781118972892', 45, '12000'],
+   ['ENG', '105', '9781118412930', 165, 'None'],
+   ['EXB', '106', '9781118344996', 506, 'None'],
+   ['GEL', '002', '9780471236436', 45, 'None'],
+   ['GEL', '003', '9780470671726', 185, '10695'],
+   ['GEL', '107', '9781405141574', 185, '10295'],
+   ['GEL', '109', '9781405135924', 45, 'None'],
+   ['GEL', '141', '9781118406847', 40, '9995'],
+   ['HIS', '017B', '9781405198998', 180, '3795'],
+   ['HYD', '146', '9780471597629', 20, 'None'],
+   ['LDA', '030', '9780470289334', 132, '6500'],
+   ['LDA', '161', '9780470278369', 36, '9500'],
+   ['LIN', '112', '9780631232261', 80, '5595'],
+   ['MAE', '226', '9780471847892', 25, 'None'],
+   ['MAT', '022B', '9780470458310', 291, 'None'],
+   ['MAT', '148', '9780471190479', 40, '19100'],
+   ['MCP', '200L', '9780470528129', 15, '10695'],
+   ['MIC', '162', '9780470900598', 120, 'None'],
+   ['NAS', '034', '9780020664307', 15, '1695'],
+   ['NAS', '130B', '9780882959566', 40, '2295'],
+   ['PHI', '137A', '9780631128014', 35, 'None'],
+   ['PHI', '178', '9780631194453', 40, '6695'],
+   ['PHY', '200B', '9780471309321', 40, 'None'],
+   ['PHY', '256', '9780471241959', 30, '12400'],
+   ['POL', '120', '9781405159388', 120, '4195'],
+   ['PSC', '142', '9781118425183', 240, 'None'],
+   ['SOC', '100', '9780470655672', 85, '5595'],
+   ['STS', '001', '9781405187657', 60, '4395'],
+   ['UWP', '102E', '9781118300275', 96, 'None']
+  ];
+  var containerOfClasses = document.getElementsByClassName('classCountList')[0];
+  for (var i = 0; i < classes_affected.length; i++) {
+    var specContainer = document.createElement('div');
+    var textChild = document.createElement('p');
+    var textISBN = document.createElement('p');
+    var urlForClass = document.createElement('a');
+    urlForClass.href = '/search?q=' + classes_affected[i][0] + classes_affected[i][1];
+    urlForClass.textContent = classes_affected[i][0] + classes_affected[i][1];
+    textISBN.className = 'isbn';
+    textISBN.textContent = "ISBN: " + classes_affected[i][2];
+    urlForClass.style.color = 'black';
+    urlForClass.style.textDecoration = 'underline';
+    specContainer.appendChild(urlForClass);
+    specContainer.appendChild(textISBN);
+    specContainer.className = 'classContainer';
+    containerOfClasses.appendChild(specContainer);
+  }
+
+</script>
+{% include 'common/footer.html' %}

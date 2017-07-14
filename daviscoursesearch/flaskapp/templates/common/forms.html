@@ -1,0 +1,19 @@
+
+{% macro subjectSelect(selected=None) %}
+<select class="subject_selection">
+    {% for subject in subjects %}
+      <option {{- ' selected' if selected == subject }}>{{ subject }}</option>
+    {% endfor %}
+  </select>
+{% endmacro %}
+
+{% macro role_select() -%}
+  <div>
+    <select class = "column-12 dropdown">
+      <option value = "student">I am a student</option>
+      <option value = "instructor">I am an instructor</option>
+      <option value = "counselor">I am a counselor</option>
+      <option value = "other">Other</option>
+    </select>
+  </div>
+{%- endmacro %}

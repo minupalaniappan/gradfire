@@ -1,0 +1,23 @@
+{% include 'admin/admin-header.html' %}
+{% include 'admin/req_templates.html' %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/major_req_input.js') }}"></script>
+<table id="prerequisite_table">
+    {% for course in courses %}
+        <tr>
+            <td class="course">{{ course['subject'] ~ ' ' ~ course['number'] }}</td>
+            <td class="prereq_text">{{ course['prerequisites'] }}</td>
+            <td class="prereq_repr" id="prereq_{{ course['subject'] ~ course['number'] }}" data-subject="{{ course['subject'] }}" data-number="{{ course['number'] }}" data-term-year="{{ course['term_year'] }}" data-term-month="{{ course['term_month'] }}" data-repr='{{ course["prerequisite_tree"] | safe if course["prerequisite_tree"] }}'>
+
+            </td>
+            {% if course['prerequisite_tree'] %}
+                <script type="text/javascript">
+                var reqTree = JSON.parse('{{ course["prerequisite_tree"] | safe }}');
+                var reqRootEle = document.getElementById("prereq_{{ course['subject'] ~ course['number'] }}");
+                update_requirements_from_node(reqTree, reqRootEle, pushPrerequisites.bind(this, reqRootEle));
+                </script>
+            {% endif %}
+        </tr>
+    {% endfor %}
+</table>
+
+{% include 'common/footer.html' %}
