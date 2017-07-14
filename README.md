@@ -1,8 +1,11 @@
 daviscoursearch
+===============
 
 Setting up Babel Dev Environment
 
 Set up Babel & React
 
-$ npm install --save-dev babel-preset-es2015
+```bash
+npm install --save-dev babel-preset-es2015
 npm install --save-dev babel-preset-react
+````
