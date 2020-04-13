@@ -1,11 +1,4 @@
 Gradfire
 ===============
 
-Setting up Babel Dev Environment
-
-Set up Babel & React
-
-```bash
-npm install --save-dev babel-preset-es2015
-npm install --save-dev babel-preset-react
-````
+Project no longer maintained; request an internal README by filing an issue. 
